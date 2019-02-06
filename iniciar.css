@@ -1,0 +1,27 @@
+body{
+	max-width: 100vh;
+}
+
+.form__container{
+	display: flex;
+	flex-direction: column;
+}
+
+.form__label{
+	font-size: 1.414em;
+
+}
+
+.title{
+	font-size: 1.999em;
+}
+
+.title__subtitle{
+	font-size: 1.414em
+}
+
+.boton{
+	background: ;
+	border: none;
+}
+
