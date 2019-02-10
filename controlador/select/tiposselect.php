@@ -8,7 +8,7 @@ $result = $conexion->query("SELECT ttipo.nombretip FROM tcatalogo, ttipo WHERE i
 $row = mysqli_fetch_array($result);
 ?>
 <div id="div_resp">
-	Tipo <input type="text" name="idttipo" id="cam_idttipo" value="<?php echo $row['nombretip'] ?>">
+	Tipo <input type="text" required name="idttipo" id="cam_idttipo" value="<?php echo $row['nombretip'] ?>">
 </div>
 
 

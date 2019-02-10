@@ -6,7 +6,7 @@ $la_marca = $_POST['marca'];
 
 $query = $conexion->query("SELECT * FROM tmodelo WHERE idtmarca = $la_marca ORDER BY nombremode ASC");
 
-echo '<option value="0">Seleccione</option>';
+echo '<option value="">Seleccione</option>';
 
 while ( $row = $query->fetch_assoc() )
 {

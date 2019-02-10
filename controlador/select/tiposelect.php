@@ -3,7 +3,7 @@ $conexion = mysqli_connect("localhost","root","","bienesnacionales");
 
 $query = $conexion->query("SELECT * FROM ttipo ORDER BY nombretip ASC");
 
-echo '<option>Seleccion</option>';
+echo '<option value="">Seleccionar</option>';
 
 while ( $row = $query->fetch_assoc() )
 {

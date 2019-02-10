@@ -6,7 +6,7 @@ $lacategoria = $_POST['categoria'];
 
 $query = $conexion->query("SELECT * FROM tsubcategoria WHERE idtcategoria = $lacategoria ORDER BY nombresubcat ASC");
 
-echo '<option value="0">Seleccione</option>';
+echo '<option value="">Seleccione</option>';
 
 while ( $row = $query->fetch_assoc() )
 {

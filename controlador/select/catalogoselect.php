@@ -3,7 +3,7 @@ $conexion = mysqli_connect("localhost","root","","bienesnacionales");
 
 $query = $conexion->query($sql="SELECT *FROM tcatalogo WHERE estatuscata=1");
 
-echo '<option value="0">Seleccione</option>';
+echo '<option value="">Seleccione</option>';
 
 while ( $row = $query->fetch_assoc() )
 {

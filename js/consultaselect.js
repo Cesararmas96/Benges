@@ -6,6 +6,7 @@ $(function(){
 	// lista de categoria	
 	$('#cam_idttipo').change(function()
 	{
+
 		var el_tipo = $(this).val();
 		
 		// Lista de subcategoria

@@ -6,7 +6,7 @@ $el_ejemplar = $_POST['ejemplar'];
 
 $query = $conexion->query("SELECT id, nombrejemp, idtejemplar FROM tejemplar WHERE iddepartamento = $el_ejemplar");
 
-echo '<option value="0">Seleccione activo</option>';
+echo '<option value="">Seleccione activo</option>';
 
 while ( $row = $query->fetch_assoc() )
 {

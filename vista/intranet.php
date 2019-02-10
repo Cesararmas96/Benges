@@ -102,7 +102,7 @@
     <script src="../bootstrap-3/DataTables-1.10.2/media/js/jquery.js"></script>
 
   </head>
- <body  onload="inicio()" onkeypress="reset()" onclick="reset()" onMouseMove="reset()"> 
+ <body> 
     <!-- EMPIEZA: MENU SUPERIOR -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
