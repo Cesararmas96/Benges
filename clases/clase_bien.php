@@ -1,13 +1,5 @@
 <?php
-	/**
-	* Clase módulo
-	*
-	* @package    ModeloAulafrontino
-	* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-	* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-	* @link       https://github.com/EquipoAulaFrontino
-	* @version    v1.0
-	*/
+	
 	require_once('../nucleo/ModeloConect.php');
 	class clsBien extends ModeloConect
 
@@ -21,19 +13,22 @@
 		private $lcIdtipo;
 		private $lcIdcategoria;
 		private $lcIdcolor;
+		private $lcDescripcion;
 	
 
 		public function __construct()
 		{
 			$this->lnIde =0 ;
-	        $this->lnCodigo =0;
+	    $this->lnCodigo =0;
 			$this->lcIdCatalogo =0 ;
-	        $this->lcCategoria= 0;
-	        $this->lcIdmarca= 0;
-	        $this->lcIdmodelo =0 ;
-	        $this->lcIdtipo =0 ;
-	        $this->lcIdcategoria =0 ;
-	        $this->lcIdcolor=0;
+	    $this->lcCategoria= 0;
+	    $this->lcIdmarca= 0;
+	    $this->lcIdmodelo =0 ;
+	    $this->lcIdtipo =0 ;
+	    $this->lcIdcategoria =0 ;
+	    $this->lcIdcolor=0;
+	    $this->lcDescripcion = '';
+
     	}
 
     	public function set_id($pnIde)
@@ -77,6 +72,10 @@
 		{
 			$this->lcIdcategoria = $pcidcategoria;
 		}
+
+		public function set_descripcion($pcdescripcion){
+			$this->lcDescripcion = $pcdescripcion;
+		} 
 		
 
 
@@ -124,7 +123,7 @@
 			$this->conectar();
 			$laBien = array();
 			$cont = 0;
-			$sql = "SELECT   tcatalogo.idtcatalogo,tcatalogo.estatuscata, tcatalogo.cantidadcat, tmodelo.nombremode, tcategoria.nombrecat, ttipo.nombretip, tmarca.nombremar , tcolor.nombrecol FROM tcatalogo, ttipo, tmarca, tmodelo, tcategoria, tcolor WHERE tcatalogo.idttipo=ttipo.idttipo AND tcatalogo.idtcategoria=tcategoria.idtcategoria AND tcatalogo.idtmodelo=tmodelo.idtmodelo AND tcatalogo.idtmarca=tmarca.idtmarca AND tcatalogo.idtcolor=tcolor.idtcolor;";
+			$sql = "SELECT   tcatalogo.idtcatalogo,tcatalogo.estatuscata, tcatalogo.cantidadcat, tmodelo.nombremode, tcategoria.nombrecat, ttipo.nombretip, tmarca.nombremar , tcolor.nombrecol, tcatalogo.descripcioncat FROM tcatalogo, ttipo, tmarca, tmodelo, tcategoria, tcolor WHERE tcatalogo.idttipo=ttipo.idttipo AND tcatalogo.idtcategoria=tcategoria.idtcategoria AND tcatalogo.idtmodelo=tmodelo.idtmodelo AND tcatalogo.idtmarca=tmarca.idtmarca AND tcatalogo.idtcolor=tcolor.idtcolor;";
 			$pcsql = $this->filtro($sql);
 			while($laRow = $this->proximo($pcsql))
 			{
@@ -136,6 +135,8 @@
 				$laBien[$cont]['nombremar']	= $laRow['nombremar'];
 				$laBien[$cont]['nombremode']	= $laRow['nombremode'];
 				$laBien[$cont]['nombrecol']	= $laRow['nombrecol'];
+				$laBien[$cont]['descripcioncat']	= $laRow['descripcioncat'];
+
 
 
 
@@ -157,9 +158,9 @@
 			#	$id2= $idtbien +1;
 
 			$sql ="INSERT INTO tcatalogo
-					(idtcatalogo,  idttipo, idtcategoria, idtmarca, idtmodelo, idtcolor)
+					(idtcatalogo,  idttipo, idtcategoria, idtmarca, idtmodelo, idtcolor, descripcioncat)
 					VALUES
-				('$this->lnCodigo','$this->lcIdtipo','$this->lcCategoria','$this->lcIdmarca','$this->lcIdmodelo', '$this->lcIdcolor')";
+				('$this->lnCodigo','$this->lcIdtipo','$this->lcCategoria','$this->lcIdmarca','$this->lcIdmodelo', '$this->lcIdcolor', UPPER('$this->lcDescripcion'))";
 			$lnHecho=$this->ejecutar($sql);
 
 			// #echo $lnHechos;

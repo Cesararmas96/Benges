@@ -87,7 +87,17 @@
             </select>        
       </div>      
     </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+          <label for="cam_descripcioncat">Descripcion <strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Descripcion del catalogo." required></i></strong></label>
+           
+           <input type="text" name="descripcioncat" class="form-control" required>    
+      </div>      
+    </div>
   </div> 
+
+
+
   <div class="row">
     <div class="col-sm-5">
       <button type="button" class="btn btn-danger center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=bien/bien';"><i class="fa fa-chevron-left"></i> Regresar</button>

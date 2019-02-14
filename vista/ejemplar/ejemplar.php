@@ -1,12 +1,3 @@
-<!--/**
-* Módulo = vista ; Permite ver el listado de módulos registrados.
-*
-* @package    ModeloAulafrontino
-* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-* @link       https://github.com/EquipoAulaFrontino
-* @version    v1.0
-*/-->
 <?php
 	$consultar= $registrar= $eliminar=false;
 	for($i=0;$i<count($laModulos);$i++)
@@ -64,15 +55,16 @@
 <h1 class="page-header">Activos</h1>
 <!-- EMPIEZA: RECOMENDACION -->
 <div class="alert alert-info" role="alert">
-    <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar cosultar los Activos.
+    <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar y consultar los Ejemplares de los mobiliarios. 
 </div>
 <!-- FIN: RECOMENDACION -->
+
 <?php
 	if($registrar)
 	{
 		echo '<a class="btn btn-success" id="btn_registrar" href="?vista=ejemplar/registrar_ejemplar"><i class="fa fa-plus"></i> Registrar Activo</a>';
 	}
-   {
+  {
         echo '<a class="btn btn-success" id="btn_reporte" target="_blank" href="../reporte/listado_ejemplar.php"><i class="fa fa-file-text"></i> Listado de ejemplar</a>';
     }
 ?>
@@ -82,7 +74,7 @@
     <input type="hidden"  name="idtejemplar" id="cam_idtejemplar"/>
     <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
         <thead>
-            <th>Codigo</th><th>Serial</th><th>Observación</th><th>Condicion</th><th>Sede</th><th>Departamento</th><?php if($consultar || $desactivar || $listar)
+            <th>Codigo</th><th>Serial</th><th>Cantidad</th><th>Condicion</th><th>Descripcion</th><th>Fecha del Registro</th><th>Catalogo</th><?php if($consultar || $desactivar || $listar)
                     { echo '<th>Operación</th>';}?>
         </thead>
         <tbody>
@@ -95,13 +87,15 @@
                     echo '<tr>';
                     echo '<td>'.$laEjemplar[$i]['codigoejemp'].'</td>';
                     echo '<td>'.$laEjemplar[$i]['serialejemp'].'</td>';
-                    echo '<td>'.$laEjemplar[$i]['descripcionejemp'].' </td>';
-                    echo '<td>'.$laEjemplar[$i]['nombreestado'].' </td>';
-                    echo '<td>'.$laEjemplar[$i]['nombrecond'].' </td>';
-                    echo '<td>'.$laEjemplar[$i]['nombresede'].' </td>';
-                    echo '<td>'.$laEjemplar[$i]['denominacion'].' </td>';
+                    echo '<td>'.$laEjemplar[$i]['cantidadejemp'].'</td>';
+                    echo '<td>'.$laEjemplar[$i]['nombrecond'].'</td>';
+                    echo '<td>'.$laEjemplar[$i]['descripcionejemp'].'</td>';
+                    echo '<td>'.$laEjemplar[$i]['fecharegistroejemp'].'</td>';
+                    echo '<td>'.$laEjemplar[$i]['descripcioncat'].'</td>';
 
-										if($consultar || $desactivar || $listar)
+          
+
+										if($consultar || $desactivar)
 								  {
                        echo '<td>';
 
@@ -124,13 +118,7 @@
 
 
                            echo "</td>";
-                           }
-                           if($listar)
-                           echo '<td>';
-                        echo '
-                            <a class="btn-sm btn-warning"  href="#" onclick="reporte('.$laEjemplar[$i]['idtejemplar'].')"><i class="fa fa-file-text"></i></a>';
-                        echo "</td>";
-
+                           }            
 
 
                        }

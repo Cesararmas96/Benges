@@ -1,35 +1,21 @@
-<!--/**
-* Registrar Estudiante = vista ; Permite registrar un estudiante.
-*
-* @package    ModeloAulafrontino
-* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-* @link       https://github.com/EquipoAulaFrontino
-* @version    v1.0
-*/-->
+
 <h1 class="page-header">Registrar Marca</h1>
 <!-- EMPIEZA: RECOMENDACION -->
   <div class="alert alert-info" role="alert">
     <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar una Marca en el sistema.
   </div>
 <!-- FIN: RECOMENDACION -->
+
 <?php
+    if(isset($_GET['datos'])){
+        switch ($_GET['datos']) {
+            case 'existe':
+                echo "<script>alert('Esta marca  ya esta registrada!');</script>";
+                echo "<br>";
+                break;
+        }
+?>
 
-                        if(isset($_GET['datos'])){
-                            switch ($_GET['datos']) {
-
-                                case 'existe':
-
-                                    echo "<script>alert('Esta marca  ya esta registrada!');</script>";
-
-                                    echo "<br>";
-                                    break;
-
-
-
-                            }
-                        }
-                     ?>
 <form class="formulario" action="../controlador/control_marca.php" method="POST" name="form_marca">
     <input type="hidden" value="registrar_marca" name="operacion" />
     <input type="hidden"  name="idtmarca" id="cam_idtmarca"/>

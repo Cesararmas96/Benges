@@ -66,7 +66,7 @@
     <input type="hidden"  name="idtcatalogo" id="cam_idtcatalogo"/>
     <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
         <thead>
-            <th>Tipo</th><th>Clasificacion</th><th>Marca</th><th>Modelo</th><th>Color</th><th>Cantidad</th><?php if($consultar || $desactivar)
+            <th>Tipo</th><th>Clasificacion</th><th>Marca</th><th>Modelo</th><th>Color</th><th>Descripcion</th><?php if($consultar || $desactivar)
                     { echo '<th>Operación</th>';}?>
         </thead>
         <tbody>
@@ -82,7 +82,7 @@
                     echo '<td>'.$laCatalogo[$i]['nombremar'].' </td>';
                     echo '<td>'.$laCatalogo[$i]['nombremode'].' </td>';
                     echo '<td>'.$laCatalogo[$i]['nombrecol'].' </td>';
-                    echo '<td>'.$laCatalogo[$i]['cantidadcat'].' </td>';
+                    echo '<td>'.$laCatalogo[$i]['descripcioncat'].' </td>';
                    if($consultar || $desactivar)
                    {
                        echo '<td>';

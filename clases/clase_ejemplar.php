@@ -12,83 +12,83 @@
 	class clsEjemplar extends ModeloConect
 
 	{
-		private $lnIdejemplar;
-		private $lnIdcodigo;
 		private $lnId;
-		private $lnIdcondicion;
-		private $lnIddepartamento;
-		private $lnIdsede;
-		private $lcSerial;
-		private $lcNombre;
-		private $lcValor;
+		private $lnIdcodigo;
+		private $lnSerial;
+		private $lcCantidad;
 		private $lcDescripcion;
+		private $lnfecha;
+		private $lcStatus;		
+		private $lnIdcondicion;
+		private $lnidCatalogo;
+
+	
+
 
 
 		public function __construct()
 		{
-	        $this->lnIdejemplar =0 ;
+	        $this->lnId =0 ;
 	        $this->lnIdcodigo =0 ;
-
-	        $this->lnId= 0;
-	        $this->lnIdcondicion= 0;
-	        $this->lnIddepartamento= 0;
-	        $this->lnIdsede= 0;
-					$this->lcSerial =0 ;
-	        $this->lcNombre ="" ;
-	        $this->lcValor =0 ;
-	        $this->lcDescripcion= "";
+	        $this->lnSerial= 0;
+	        $this->lcCantidad = 0;
+	        $this->lcDescripcion= 0;
+	        $this->lnfecha=0;
+	        $this->lcStatus = 1 ;
+	        $this->lnIdcondicion='';
+	        $this->lnidCatalogo= '';
+	        
     	}
 
 		public function set_idejemplar($pnIdejemplar)
 		{
-			$this->lnIdejemplar = $pnIdejemplar;
+			$this->lnId = $pnIdejemplar;
 		}
 
 		public function set_idcodigo($pnIdcodigo)
 		{
 			$this->lnIdcodigo = $pnIdcodigo;
 		}
-		public function set_nombre($pcNombre)
+	
+		public function set_serial($pnSerial)
 		{
-			$this->lcNombre = $pcNombre;
-		}
-		public function set_idcatalogo($pnid)
-		{
-			$this->lnId = $pnid;
-		}
-		public function set_serial($pcSerial)
-		{
-			$this->lcSerial = $pcSerial;
-		}
-		public function set_valor($pcValor)
-		{
-			$this->lcValor = $pcValor;
-		}
-		public function set_condicion($pccondicion)
-		{
-			$this->lnIdcondicion = $pccondicion;
-		}
-		public function set_departamento($pcdepartamento)
-		{
-			$this->lnIddepartamento = $pcdepartamento;
-		}
-		public function set_sede($pcsede)
-		{
-			$this->lnIdsede = $pcsede;
+			$this->lnSerial = $pnSerial;
 		}
 
+		public function set_cantidad($pnCantidad){
+			$this->lcCantidad = $pnCantidad;
+		}
+	
 		public function set_descripcion($pcDescripcion)
 		{
 			$this->lcDescripcion = $pcDescripcion;
 
 		}
 
+		public function set_fecha($pcFecha){
+			$this->lnfecha = $pcFecha; 
+		}
+	
+		public function set_status($pcstatus)
+		{
+			$this->lcStatus = $pcstatus;
+		}
+
+		public function set_condicion($pccondicion){
+			$this->lnIdcondicion	= $pccondicion;	
+		}
+
+		public function set_IdCatalogo($pccatalogo){
+			$this->lnidCatalogo = $pccatalogo;
+		}
+
+
 
 
 		function consultar_bien()
 		{
 			$this->conectar();
-				$sql="SELECT id,idtcatalogo,numeroinvent,idtmarca,idtmodelo,idttipo,idtcategoria,idtsubcategoria,cantidadcat FROM tcatalogo WHERE idtcatalogo='$this->lnIdejemplar'";
+				$sql="SELECT id,idtcatalogo,numeroinvent,idtmarca,idtmodelo,idttipo,idtcategoria,idtsubcategoria,cantidadcat FROM tcatalogo WHERE idtcatalogo='$this->lnId'";
 				$pcsql=$this->filtro($sql);
 				if($laRow=$this->proximo($pcsql))
 				{
@@ -112,22 +112,18 @@
 		{
 			$this->conectar();
 			$cont = 0;
-			$sql = "SELECT tejemplar.idtejemplar, tejemplar.serialejemp,tejemplar.codigoejemp, tejemplar.descripcionejemp, testado.nombreestado, tcondicion.nombrecond, tcatalogo.idtcatalogo, tdepartamento.denominacion, tsede.nombresede FROM tcatalogo, testado, tcondicion, tejemplar, tdepartamento, tsede WHERE tejemplar.idtestado=testado.idtestado AND tejemplar.idtcondicion=tcondicion.idtcondicion AND tejemplar.idtcatalogo=tcatalogo.idtcatalogo AND tejemplar.iddepartamento=tdepartamento.iddepartamento ";
+			$sql = "SELECT tejemplar.codigoejemp, tejemplar.serialejemp, tejemplar.cantidadejemp, tcondicion.nombrecond, tejemplar.descripcionejemp, tejemplar.fecharegistroejemp, tcatalogo.descripcioncat, tejemplar.estatusejemp FROM tejemplar, tcondicion, tcatalogo WHERE tejemplar.idtcondicion = tcondicion.idtcondicion AND tejemplar.idtcatalogo = tcatalogo.idtcatalogo";
 			$pcsql = $this->filtro($sql);
 			while($laRow = $this->proximo($pcsql))
 			{
-				$laBien[$cont]['idtejemplar']	= $laRow['idtejemplar'];
-				$laBien[$cont]['serialejemp']	= $laRow['serialejemp'];
 				$laBien[$cont]['codigoejemp']	= $laRow['codigoejemp'];
+				$laBien[$cont]['serialejemp']	= $laRow['serialejemp'];
+				$laBien[$cont]['cantidadejemp']	= $laRow['cantidadejemp'];
 				$laBien[$cont]['descripcionejemp']	= $laRow['descripcionejemp'];
-				$laBien[$cont]['estatusejemp']	= $laRow['estatusejemp'];
-				$laBien[$cont]['nombreestado']	= $laRow['nombreestado'];
+				$laBien[$cont]['fecharegistroejemp']	= $laRow['fecharegistroejemp'];
 				$laBien[$cont]['nombrecond']	= $laRow['nombrecond'];
-				$laBien[$cont]['denominacion']	= $laRow['denominacion'];
-				$laBien[$cont]['nombresede']	= $laRow['nombresede'];
-				$laBien[$cont]['nombresubcat']	= $laRow['nombresubcat'];
-				$laBien[$cont]['idtcatalogo']	= $laRow['idtcatalogo'];
-
+				$laBien[$cont]['estatusejemp']	= $laRow['estatusejemp'];
+				$laBien[$cont]['descripcioncat']	= $laRow['descripcioncat'];				
 				$cont++;
 			}
 			$this->desconectar();
@@ -141,37 +137,26 @@
 		public function registrar_ejemplar()
 		{
 			$this->conectar();
-			#$rs =  "SELECT MAX(idtbien) FROM tbien";
-			#$lnHechos=$this->ejecutar($rs);
-			#if ($row = mysql_fetch_row($lnHechos))
-			#{
-			#	$idtbien = trim($row[0]);
-			#	$id2= $idtbien +1;
-
+			$fecha = date('Y-m-d');
 			$sql ="INSERT INTO tejemplar
-					(idtejemplar, serialejemp, nombrejemp, descripcionejemp, idtcondicion, idtcatalogo, idsede, iddepartamento)
+					(idtejemplar, codigoejemp ,serialejemp, cantidadejemp, descripcionejemp, fecharegistroejemp, estatusejemp ,idtcondicion, idtcatalogo)
 					VALUES
-				('$this->lnId','$this->lcSerial', '$this->lcNombre','$this->lcDescripcion','$this->lnIdcondicion','$this->lnId', '$this->lnIdsede','$this->lnIddepartamento')";
+				('$this->lnId', '$this->lnIdcodigo', '$this->lnSerial', '$this->lcCantidad', UPPER('$this->lcDescripcion'),'$fecha', '$this->lcStatus', '$this->lnIdcondicion', '$this->lnidCatalogo' )";
 			$lnHecho=$this->ejecutar($sql);
-			$id=mysql_insert_id();
-			$sql1= "UPDATE tejemplar SET idtejemplar='$this->lnId-$id' WHERE id='$id'";
-			$lnHechos=$this->ejecutar($sql1);
-			$sql2= "UPDATE tcatalogo SET cantidadcat= cantidadcat +1  WHERE idtcatalogo='$this->lnId'";
-			$lnHechos=$this->ejecutar($sql2);
-			#echo $lnHechos;
-			echo "<br>";
-			echo $sql;
-			echo "<br>";
-			echo $this->lnId;
-			echo "<br>";
-			echo $sql1;
-			echo "<br>";
-			echo $sql2;
-
-
-
+			// $id=mysql_insert_id();
+			// $sql1= "UPDATE tejemplar SET idtejemplar='$this->lnId-$id' WHERE id='$id'";
+			// $lnHechos=$this->ejecutar($sql1);
+			// $sql2= "UPDATE tcatalogo SET cantidadcat= cantidadcat +1  WHERE idtcatalogo='$this->lnId'";
+			// $lnHechos=$this->ejecutar($sql2);
+			#echo $lnHechos;			
+			// echo $sql;
+			// echo "<br>";
+			// echo $this->lnId;
+			// echo "<br>";
+			// echo $sql1;
+			// echo "<br>";
+			// echo $sql2;
 			$this->desconectar();
-
 			return $lnHechos;
 		}
 			function listar_estados()
@@ -208,7 +193,7 @@
 		function desactivar_ejemplar()
 			{
 			$this->conectar();
-			$sql="UPDATE `tejemplar` SET `estatusejemp`='0' WHERE idtejemplar='$this->lnIdejemplar';";
+			$sql="UPDATE `tejemplar` SET `estatusejemp`='0' WHERE idtejemplar='$this->lnId';";
 			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
@@ -216,7 +201,7 @@
 		function activar_ejemplar()
 			{
 			$this->conectar();
-			$sql="UPDATE `tejemplar` SET `estatusejemp`='1' WHERE idtejemplar='$this->lnIdejemplar';";
+			$sql="UPDATE `tejemplar` SET `estatusejemp`='1' WHERE idtejemplar='$this->lnId';";
 			$lnHecho=$this->ejecutar($sql);
 			$this->desconectar();
 			return $lnHecho;
@@ -246,5 +231,12 @@
 			$this->desconectar();
 			return $Fila;
 		}
+
+		function fechaNormal($fecha){
+
+			$nfecha = date('d/m/Y',strtotime($fecha));
+			return $nfecha;
+		}
+
 	}
 ?>
