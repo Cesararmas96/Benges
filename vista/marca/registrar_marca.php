@@ -5,17 +5,23 @@
     <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar una Marca en el sistema.
   </div>
 <!-- FIN: RECOMENDACION -->
-
 <?php
-    if(isset($_GET['datos'])){
-        switch ($_GET['datos']) {
-            case 'existe':
-                echo "<script>alert('Esta marca  ya esta registrada!');</script>";
-                echo "<br>";
-                break;
-        }
-?>
 
+                        if(isset($_GET['datos'])){
+                            switch ($_GET['datos']) {
+
+                                case 'existe':
+
+                                    echo "<script>alert('Esta marca  ya esta registrada!');</script>";
+
+                                    echo "<br>";
+                                    break;
+
+
+
+                            }
+                        }
+                     ?>
 <form class="formulario" action="../controlador/control_marca.php" method="POST" name="form_marca">
     <input type="hidden" value="registrar_marca" name="operacion" />
     <input type="hidden"  name="idtmarca" id="cam_idtmarca"/>
@@ -43,29 +49,3 @@
         </div>
 
 </form>
-<script>
-$(document).ready(function() {
-    $("#cam_nombre_marca").change(function() {
-        var valor_consultar = $("#cam_nombre_marca").val();
-        $("#status_per").html('<img src="../bootstrap/img/loader.gif" align="absmiddle">&nbsp;Analizando...');
-            $.ajax({
-                type: "POST",
-                url: "../controlador/control_marca.php",
-                data: {nombremar:valor_consultar,operacion:"consultar_marca"},
-                success: function(data){
-                    if(data=='1')
-                    {
-                        $("#status_per").hide();
-                        $("#btn_enviar").prop( "disabled", true );
-                        alert('Este Tipo ya está registrado en el sistema.');
-                    }
-                    else
-                    {
-                        $("#btn_enviar").prop( "disabled", false );
-                        $("#status_per").hide();
-                    }
-                }
-            });
-    });
-});
-</script>

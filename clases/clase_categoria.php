@@ -36,6 +36,25 @@
 			$this->lsTipo = $psTipo;
 		}
 
+
+			public function consulta_categoria()
+		{
+			$this->conectar();
+			$cont=0;
+			$sql="SELECT * FROM tcategoria";
+			$pcsql=$this->filtro($sql);
+			while($laRow=$this->proximo($pcsql))
+			{
+				$Fila[$cont]['idtcategoria']=$laRow['idtcategoria'];
+				$Fila[$cont]['nombrecat']=$laRow['nombrecat'];
+
+				$cont++;
+			}
+			$this->desconectar();
+			return $Fila;
+		}
+
+
 		public function consultar_categoria()
 		{
 			$laTipo = array();
@@ -107,7 +126,6 @@
 		}
 
 		public function listar_categoria()
-		
 		{
 			
 			//select m.idproyecto,e.nombre_proyecto FROM t_proyecto as m inner join t_proyecto as e on (m.idproyecto=e.idproyecto) where idproyecto like '%".$this->aa_Form['valor']."%'";  AND 't1.idtpersona'='t3.idtpersona'

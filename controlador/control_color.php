@@ -69,7 +69,7 @@ $nom =$_POST['nombrecol'];
 			}
 			else
 			{	
-				$_SESSION['msj']='Error al eliminar';
+				$_SESSION['msj']='Error al desactivar';
 			}
 			header('location: ../vista/intranet.php?vista=color/color');
 		break;

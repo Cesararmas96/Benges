@@ -79,27 +79,27 @@
 		
 
 
-		function consultar_bien()
+		public function consultar_bien()
 		{
+			$elCatalogo = array();
 			$this->conectar();
-				$sql="SELECT * FROM tcatalogo WHERE idtcatalogo='$this->lnIde'";
-				$pcsql=$this->filtro($sql);
-				if($laRow=$this->proximo($pcsql))
-				{
-					$Fila['idtcatalogo']=$laRow['idtcatalogo'];
-					$Fila['cantidadcat']=$laRow['cantidadcat'];
-					$Fila['estatuscata']=$laRow['estatuscata'];
-					$Fila['idttipo']=$laRow['idttipo'];
-					$Fila['idtcategoria']=$laRow['idtcategoria'];
-					$Fila['idtmarca']=$laRow['idtmarca'];
-					$Fila['idtmodelo']=$laRow['idtmodelo'];
-					$Fila['idtcolor']=$laRow['idtcolor'];
 
-
-				}
+			$sql="SELECT * FROM tcatalogo WHERE idtcatalogo='$this->lnIde'";
+			$pcsql=$this->filtro($sql);
+			while($laRow=$this->proximo($pcsql))
+			{
+				$elCatalogo['idtcatalogo']=$laRow['idtcatalogo'];
+				$elCatalogo['estatuscata']=$laRow['estatuscata'];
+				$elCatalogo['idttipo']=$laRow['idttipo'];
+				$elCatalogo['idtcategoria']=$laRow['idtcategoria'];
+				$elCatalogo['idtmarca']=$laRow['idtmarca'];
+				$elCatalogo['idtmodelo']=$laRow['idtmodelo'];
+				$elCatalogo['idtcolor']=$laRow['idtcolor'];
+				$elCatalogo['descripcioncat']=$laRow['descripcioncat'];
+			}
 
 			$this->desconectar();
-			return $Fila;
+			return $elCatalogo;
 		}
 		
 		function consultar_codigo()
@@ -265,6 +265,21 @@
 			}
 			$this->desconectar();
 			return $Fila;
+		}
+
+			public function consultar_bien_id()
+		{
+			$elCatalogo = array();
+			$this->conectar();
+			$sql = "SELECT * FROM tcatalogo WHERE  idtcatalogo ='$this->lnIde'";
+			$pcsql = $this->filtro($sql);
+			while($laRow = $this->proximo($pcsql))
+			{
+				$elCatalogo['idtcatalogo']	= $laRow['idtcatalogo'];
+				$elCatalogo['descripcioncat']		= $laRow['descripcioncat'];
+			}
+			$this->desconectar();
+			return $elCatalogo;
 		}
 	}
 ?>

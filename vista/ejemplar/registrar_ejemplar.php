@@ -1,3 +1,20 @@
+<?php
+
+                        if(isset($_GET['datos'])){
+                            switch ($_GET['datos']) {
+
+                                case 'existe':
+
+                                    echo "<script>alert('Este codigo ya esta registrado!');</script>";
+
+                                    echo "<br>";
+                                    break;
+
+
+
+                            }
+                        }
+                     ?>
 <h1 class="page-header"> Registro del Ejemplar </h1>
 
 <form role="form" class="form" action="../controlador/control_ejemplar.php" method="POST" name="form_ejemplar">
@@ -46,9 +63,9 @@
     <div class="col-md-1"></div>
     <div class="col-md-5">
       <div class="form-group">
-        <label for="cam_serialejemp">Codigo<strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Serial del activo."></i></strong></label>
+        <label for="cam_codigoejemp">Codigo<strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Serial del activo."></i></strong></label>
                 
-        <input type="text"  maxlength="15" name="codigoejemp" class="form-control" id="cam_codigoejemp" required="">
+        <input type="text"  maxlength="15" name="codigoejemp" class="form-control" id="cam_codigoejemp" required>
       </div>
     </div>
     
@@ -108,6 +125,7 @@
 
          
 
+  <div class="status_per"></div>
           
 
   <div class="row">
@@ -125,3 +143,31 @@
     <button type="submit" class="btn btn-danger center-block" name="btn_enviar" id="btn_enviar"><i class="fa fa-check" ></i> Aceptar</button>
   </div>
 </form>
+
+<script>
+$(document).ready(function() {
+    $("#cam_codigoejemp").change(function() {
+        var valor_consultar = $("#cam_codigoejemp").val();
+        $("#status_per").html('<img src="../bootstrap/img/loader.gif" align="absmiddle">&nbsp;Analizando...');
+            $.ajax({
+                type: "POST",
+                url: "../controlador/control_ejemplar.php",
+                data: {codigoejemp:valor_consultar,operacion:"consultar_ejemplar"},
+                success: function(data){
+                    if(data=='1')
+                    {
+                        $("#status_per").hide();
+                        $("#btn_enviar").prop( "disabled", true );
+                        alert('Este Tipo ya está registrado en el sistema.');
+                    }
+                    else
+                    {
+                        $("#btn_enviar").prop( "disabled", false );
+                        $("#status_per").hide();
+                    }
+                }
+            });
+    });
+});
+</script>
+

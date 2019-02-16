@@ -78,8 +78,8 @@ $codigo=$_POST['idttipo'].$_POST['idtcategoria'].$_POST['idtmarca'].$_POST['idtm
 			header('location: ../vista/intranet.php?vista=bien/bien');
 		break;
 		case 'consultar_bien':
-			$datos_consulta = $lobjUsuario->consultar_bien();
-			if($datos_consulta['id']!='')
+			$datos_consulta = $lobjBien->consultar_bien_id();
+			if($datos_consulta['idtcatalogo']!='')
 			{
 				print('1');
 			}

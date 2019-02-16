@@ -32,13 +32,14 @@ function desactivar(id)
     if(confirm("¿Está seguro que desea desactivar el color seleccionada?"))
     {
       document.getElementById("cam_idtcolor").value=id;
+      alert(id);
       document.form_color.submit();
     }
 }
 
 function activar(id)
 {
-    if(confirm("¿Desea activar el color seleccioanda?"))
+    if(confirm("¿Desea activar el color seleccionado?"))
     {
         document.getElementById("cam_idtcolor").value=id;
         document.getElementById("cam_operacion").value='activar_color';

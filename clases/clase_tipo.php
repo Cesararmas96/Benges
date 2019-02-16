@@ -1,13 +1,5 @@
 <?php
-	/**
-	* Clase estudiante 
-	*
-	* @package    ModeloAulafrontino
-	* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-	* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-	* @link       https://github.com/EquipoAulaFrontino
-	* @version    v1.0
-	*/
+
 	require_once('../nucleo/ModeloConect.php');
 	class clsTipo extends ModeloConect
 	{
@@ -74,6 +66,22 @@
 			return $laTipo;
 		}
 
+		public function consulta_tipo()
+		{
+			$this->conectar();
+			$cont=0;
+			$sql="SELECT * FROM ttipo";
+			$pcsql=$this->filtro($sql);
+			while($laRow=$this->proximo($pcsql))
+			{
+				$Fila[$cont]['idttipo']=$laRow['idttipo'];
+				$Fila[$cont]['nombretip']=$laRow['nombretip'];
+
+				$cont++;
+			}
+			$this->desconectar();
+			return $Fila;
+		}
 		public function consultar_tipo_id()
 		{
 			$laTipo = array();

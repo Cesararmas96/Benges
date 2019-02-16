@@ -1,13 +1,4 @@
 <?php
-	/**
-	* Clase módulo
-	*
-	* @package    ModeloAulafrontino
-	* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-	* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-	* @link       https://github.com/EquipoAulaFrontino
-	* @version    v1.0
-	*/
 	require_once('../nucleo/ModeloConect.php');
 	class clsCondicion extends ModeloConect
            
@@ -56,23 +47,23 @@
 			return $laCondicion;
 		}
 
-		function listar_condiciones_activas()
-		{
-			$this->conectar();
-			$cont=0;
-			$sql="SELECT * FROM tcondicion WHERE estatuscond=1";
-			$pcsql=$this->filtro($sql);
-			while($laRow=$this->proximo($pcsql))
-			{
-				$Fila[$cont]['idtcondicion']=$laRow['idtcondicion'];
-				$Fila[$cont]['nombrecond']=$laRow['nombrecond'];
-				$Fila[$cont]['estatuscond']=$laRow['estatuscond'];
+		// function listar_condiciones_activas()
+		// {
+		// 	$this->conectar();
+		// 	$cont=0;
+		// 	$sql="SELECT * FROM tcondicion WHERE estatuscond=1";
+		// 	$pcsql=$this->filtro($sql);
+		// 	while($laRow=$this->proximo($pcsql))
+		// 	{
+		// 		$Fila[$cont]['idtcondicion']=$laRow['idtcondicion'];
+		// 		$Fila[$cont]['nombrecond']=$laRow['nombrecond'];
+		// 		$Fila[$cont]['estatuscond']=$laRow['estatuscond'];
 
-				$cont++;
-			}
-			$this->desconectar();
-			return $Fila;
-		}
+		// 		$cont++;
+		// 	}
+		// 	$this->desconectar();
+		// 	return $Fila;
+		// }
 
 		public function listar_condicion()
 		{
@@ -92,23 +83,23 @@
 			return $laCondicion;
 		}
 
-		function listar_condicion_activas()
-		{
-			$this->conectar();
-			$cont=0;
-			$sql="SELECT * FROM tcondicion WHERE estatuscond=1";
-			$pcsql=$this->filtro($sql);
-			while($laRow=$this->proximo($pcsql))
-			{
-				$Fila[$cont]['idtcondicion']=$laRow['idtcondicion'];
-				$Fila[$cont]['nombrecond']=$laRow['nombrecond'];
-				$Fila[$cont]['estatuscond']=$laRow['estatuscond'];
+		// function listar_condicion_activas()
+		// {
+		// 	$this->conectar();
+		// 	$cont=0;
+		// 	$sql="SELECT * FROM tcondicion WHERE estatuscond=1";
+		// 	$pcsql=$this->filtro($sql);
+		// 	while($laRow=$this->proximo($pcsql))
+		// 	{
+		// 		$Fila[$cont]['idtcondicion']=$laRow['idtcondicion'];
+		// 		$Fila[$cont]['nombrecond']=$laRow['nombrecond'];
+		// 		$Fila[$cont]['estatuscond']=$laRow['estatuscond'];
 
-				$cont++;
-			}
-			$this->desconectar();
-			return $Fila;
-		}
+		// 		$cont++;
+		// 	}
+		// 	$this->desconectar();
+		// 	return $Fila;
+		// }
 
 		public function consultar_condicion_id()
 		{
@@ -169,8 +160,38 @@
 			return $lnHecho;
 		}
 
-		
+		// function consultar_condiciones()
+		// {
 
-		
+		// 	$this->conectar();
+		// 	$cont=0;
+		// 	$sql="SELECT * FROM tcondicion";
+		// 	$pcsql=$this->filtro($sql);
+		// 	while($laRow=$this->proximo($pcsql))
+		// 	{
+		// 		$Fila[$cont][0]=$laRow['idtcondicion'];
+		// 		$Fila[$cont][1]=$laRow['nombrecond'];
+		// 		$cont++;
+		// 	}
+		// 	$this->desconectar();
+		// 	return $Fila;
+		// }
+
+		public function listar_condiciones_activas()
+		{
+			$this->conectar();
+			$cont=0;
+			$sql="SELECT idtcondicion, nombrecond FROM tcondicion WHERE estatuscond=1";
+			$pcsql=$this->filtro($sql);
+			while($laRow=$this->proximo($pcsql))
+			{
+				$Fila[$cont]['idtcondicion']=$laRow['idtcondicion'];
+				$Fila[$cont]['nombrecond']=$laRow['nombrecond'];
+
+				$cont++;
+			}
+			$this->desconectar();
+			return $Fila;
+		}		
 	}
 ?>

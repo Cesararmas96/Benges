@@ -1,12 +1,4 @@
-<!--/**
-* Registrar Módulo = vista ; Permite registrar un módulo.
-*
-* @package    ModeloAulafrontino
-* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-* @link       https://github.com/EquipoAulaFrontino
-* @version    v1.0
-*/--><?php
+<?php
     require_once("../clases/clase_usuario.php");
     $lobjUsuario=new clsUsuario;
     

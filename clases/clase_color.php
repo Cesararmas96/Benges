@@ -1,13 +1,5 @@
 <?php
-	/**
-	* Clase estudiante 
-	*
-	* @package    ModeloAulafrontino
-	* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-	* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-	* @link       https://github.com/EquipoAulaFrontino
-	* @version    v1.0
-	*/
+
 	require_once('../nucleo/ModeloConect.php');
 	class clsColor extends ModeloConect
 	{
@@ -69,6 +61,23 @@
 			$this->desconectar();
 			return $laTipo;
 		}
+		
+		public function consulta_color()
+		{
+			$this->conectar();
+			$cont=0;
+			$sql="SELECT * FROM tcolor";
+			$pcsql=$this->filtro($sql);
+			while($laRow=$this->proximo($pcsql))
+			{
+				$Fila[$cont]['idtcolor']=$laRow['idtcolor'];
+				$Fila[$cont]['nombrecol']=$laRow['nombrecol'];
+
+				$cont++;
+			}
+			$this->desconectar();
+			return $Fila;
+		}
 
 		public function consultar_color_nom()
 		{
@@ -84,6 +93,7 @@
 			$this->desconectar();
 			return $laTipo;
 		}
+		
 		public function listar_color()
 		{
 			$laTipo = array();
