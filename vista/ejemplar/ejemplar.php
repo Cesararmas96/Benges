@@ -75,7 +75,7 @@ function activar(id)
     <input type="hidden"  name="idtejemplar" id="cam_idtejemplar"/>
     <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
         <thead>
-            <th>Codigo</th><th>Serial</th><th>Cantidad</th><th>Condicion</th><th>Descripcion</th><th>Fecha del Registro</th><th>Catalogo</th><?php if($consultar || $desactivar)
+            <th>Codigo</th><th>Serial</th><!-- <th>Cantidad</th> --><th>Condicion</th><th>Descripcion</th><th>Fecha del Registro</th><th>Catalogo</th><?php if($consultar || $desactivar)
                     { echo '<th>Operación</th>';}?>
         </thead>
         <tbody>
@@ -88,7 +88,7 @@ function activar(id)
                     echo '<tr style="text-align: center;">';
                     echo '<td>'.$laEjemplar[$i]['codigoejemp'].'</td>';
                     echo '<td>'.$laEjemplar[$i]['serialejemp'].'</td>';
-                    echo '<td>'.$laEjemplar[$i]['cantidadejemp'].'</td>';
+                    // echo '<td>'.$laEjemplar[$i]['cantidadejemp'].'</td>';
                     echo '<td>'.$laEjemplar[$i]['nombrecond'].'</td>';
                     echo '<td>'.$laEjemplar[$i]['descripcionejemp'].'</td>';
                     echo '<td>'.$laEjemplar[$i]['fecharegistroejemp'].'</td>';

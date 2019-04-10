@@ -106,9 +106,9 @@
 			$this->conectar();
 			$fecha = date('Y-m-d');
 			$sql ="INSERT INTO tejemplar
-					(idtejemplar, codigoejemp ,serialejemp, cantidadejemp, descripcionejemp, fecharegistroejemp, estatusejemp ,idtcondicion, idtcatalogo)
+					(idtejemplar, codigoejemp ,serialejemp, cantidadejemp, descripcionejemp, fecharegistroejemp ,idtcondicion, idtcatalogo)
 					VALUES
-				('$this->lnTEjemplar', '$this->lnIdcodigo', '$this->lnSerial', '$this->lcCantidad', UPPER('$this->lcDescripcion'),'$fecha', '$this->lcStatus', '$this->lnIdcondicion', '$this->lnidCatalogo' )";
+				('$this->lnTEjemplar', '$this->lnIdcodigo', '$this->lnSerial', '$this->lcCantidad', UPPER('$this->lcDescripcion'),'$fecha', '$this->lnIdcondicion', '$this->lnidCatalogo' )";
 			$lnHecho=$this->ejecutar($sql);
 			// $id=mysql_insert_id();
 			// $sql1= "UPDATE tejemplar SET idtejemplar='$this->lnId-$id' WHERE id='$id'";

@@ -1,12 +1,3 @@
-<!--/**
-* Consultar Módulo = vista ; Permite ver y modificar una módulo.
-*
-* @package    ModeloAulafrontino
-* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-* @link       https://github.com/EquipoAulaFrontino
-* @version    v1.0
-*/-->
 <?php
     require_once("../clases/clase_departamento.php");
     $lobjDepartamento=new clsDepartamento;
@@ -57,24 +48,23 @@
 <br>
     <div class="row">
         <div class="col-md-6">
-        <label for="cam_encargado">Encargado <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Encargado."><i class="fa fa-question" ></i></span></label>
-                <select type="text" name="idtpersona" class="form-control" id="idtpersona" style="width:200px; height:35px" required>
+            <label for="cam_encargado">Encargado <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Encargado."><i class="fa fa-question" ></i></span></label>
+            
+            <select type="text" name="idtpersona" class="form-control" id="idtpersona" style="width:200px; height:35px" required>
                 <option value="">Elegir</option>
                 <?php
-                        require_once('../clases/clase_personal.php');
-                        $lobjPersona=new ClsPersona;
-                        $laPersona=$lobjPersona->listar_personas_activas();
-                        for($i=0;$i<count($laPersona);$i++)
-                        {
-                             $selected=($laPersona[$i]['idtpersona']==$laDepartamento['idtpersona'])?'selected':'';
-                            echo '<option value="'.$laPersona[$i]['idtpersona'].'" '.$selected.'>'.$laPersona[$i]['nombreunoper'].'</option>';
-                        }
-                    ?>
-            </select>
+                    require_once('../clases/clase_personal.php');
+                    $lobjPersona=new ClsPersona;
+                    $laPersona=$lobjPersona->listar_personas_activas();
+                    for($i=0;$i<count($laPersona);$i++){                        
+                        $selected=($laPersona[$i]['idtpersona']==$laDepartamento['idtpersona'])?'selected':'';
+                        echo '<option value="'.$laPersona[$i]['idtpersona'].'" '.$selected.'>'.$laPersona[$i]['nombreunoper'].'</option>';
+                    }
+                ?>
+            </select>       
+        </div> 
 
-            
-       
-                  </div> <br><br><br><br>
+        <br><br><br><br>
     
         <div class="row">
         <div class="col-md-6">

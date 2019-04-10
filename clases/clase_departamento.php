@@ -49,32 +49,32 @@
 
 
 
-		function select_departamento()
-		{
-			$laDepartamento = array();
-			$cont = 0;
-			$this->conectar();
-				$sql ="SELECT t1.iddepartamento, t1.denominacion, estatusdep, idtpersona ) t2.nombresede
-				   FROM tdepartamento AS t1 INNER JOIN tsede AS t2 ON (t1.idsede=t2.idsede)
-				   INNER JOIN tpersona AS t3 ON (t1.idtpersona=t3.idtpersona) WHERE iddepartamento = '$this->lnIdDepartamento' ;";
-				$pcsql=$this->filtro($sql);
-				if($laRow=$this->proximo($pcsql))
-				{
+		// function select_departamento()
+		// {
+		// 	$laDepartamento = array();
+		// 	$cont = 0;
+		// 	$this->conectar();
+		// 		$sql ="SELECT t1.iddepartamento, t1.denominacion, estatusdep, idtpersona ) t2.nombresede
+		// 		   FROM tdepartamento AS t1 INNER JOIN tsede AS t2 ON (t1.idsede=t2.idsede)
+		// 		   INNER JOIN tpersona AS t3 ON (t1.idtpersona=t3.idtpersona) WHERE iddepartamento = '$this->lnIdDepartamento' ;";
+		// 		$pcsql=$this->filtro($sql);
+		// 		if($laRow=$this->proximo($pcsql))
+		// 		{
 
-				$laDepartamento['iddepartamento']	= $laRow['iddepartamento'];
-				$laDepartamento['denominacion']	= $laRow['denominacion'];
-				$laDepartamento['estatusdep']	= $laRow['estatusdep'];
-				$laDepartamento['nomyape']	= $laRow['nomyape'];
-				$laDepartamento['nombresede']	= $laRow['nombresede'];
-				$laDepartamento['idtpersona']	= $laRow['idtpersona'];
+		// 		$laDepartamento['iddepartamento']	= $laRow['iddepartamento'];
+		// 		$laDepartamento['denominacion']	= $laRow['denominacion'];
+		// 		$laDepartamento['estatusdep']	= $laRow['estatusdep'];
+		// 		$laDepartamento['nomyape']	= $laRow['nomyape'];
+		// 		$laDepartamento['nombresede']	= $laRow['nombresede'];
+		// 		$laDepartamento['idtpersona']	= $laRow['idtpersona'];
 
 
 
-				}
+		// 		}
 
-			$this->desconectar();
-			return $laDepartamento;
-		}
+		// 	$this->desconectar();
+		// 	return $laDepartamento;
+		// }
 
 		public function consultar_departamentos()
 		{

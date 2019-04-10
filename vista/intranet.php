@@ -128,11 +128,14 @@
           <ul class="nav navbar-nav movil">
             <?php echo $menu;?>
           </ul>
-          <div class="navbar-form navbar-right">
-
+           <div class="navbar-form navbar-right" style="display: flex">
+                
+             
+                <a href="intranet.php"><button name="volver" class="btn" style="margin-right: .5em">Volver</button></a>
                 <form name="form_intranet" action="../controlador/control_acceso.php" method="POST">
                     </b></a> <input type="submit" name="salir"  class="btn btn-danger" value="Salir">
                 </form>
+            
           </div>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

@@ -83,9 +83,9 @@
     <div class="col-md-1"></div>
     <div class="col-md-5">
       <div class="form-group">
-        <label for="cam_serialejemp">Cantidad<strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Serial del activo."></i></strong></label>
-                
-        <input type="number" min="0" maxlength="3" name="cantidadejemp" class="form-control" id="cam_cantidadejemp" required>
+        <label for="cam_serialejemp">Descripcion<strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Descripción del activo."></i></strong></label>
+        
+        <input type="text" name="descripcionejemp" class="form-control" id="cam_descripcionejemp" required>
       </div>
     </div>
 
@@ -99,7 +99,7 @@
           <?php
             require_once('../clases/clase_condicion.php');
             $lobjCondicion=new clsCondicion;
-            $laCondicion=$lobjCondicion->listar_condicion_activas();
+            $laCondicion=$lobjCondicion->listar_condiciones_activas();
             
             for($i=0;$i<count($laCondicion);$i++){
 
@@ -111,19 +111,7 @@
     </div>    
   </div>
 
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-      <div class="form-group">
-        <label for="cam_serialejemp">Descripcion<strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Descripción del activo."></i></strong></label>
-        
-        <textarea name="descripcionejemp" class="form-control" id="cam_descripcionejemp" required></textarea>
-      </div>
-    </div>
-    
-  </div>
-
-         
+          
 
   <div class="status_per"></div>
           
@@ -140,8 +128,29 @@
     </div>
   
   <div class="col-md-6">
-    <button type="submit" class="btn btn-danger center-block" name="btn_enviar" id="btn_enviar"><i class="fa fa-check" ></i> Aceptar</button>
+    <button type="submit" class="btn btn-danger center-block" name="btn_enviar" id="btn_enviar"><i class="fa fa-check" ></i> Guardar</button>
   </div>
+<!-- 
+  <div class="col-md-6">
+    <input type="button"  class="btn btn-primary" value="Agregar" onClick="fagregar()" >
+  </div> -->
+
+<!--   <div style="width:700px;  ">
+    <table id="detalle"  class="table table-hover"> -->
+     <!--Acá se almacenan los datos ya que con una funcion del javascript hace que se coloquen en la parte inferior uno por uno y al momento de darle guardar todos los datos almacenados se manden a la base de datos -->
+<!--     <tbody>
+      <td style="width:150px">Codigo</td>
+      <td style="width:250px">Serial</td>
+      <td style="width:150px">Descripcion</td>
+      <td style="width:150px">Condicion</td>
+      </center>
+    
+      <input type="hidden" name="cont_bie" id="cont_bie" value="0">
+    </tbody>
+    </table>
+  </div> -->
+
+                      
 </form>
 
 <script>

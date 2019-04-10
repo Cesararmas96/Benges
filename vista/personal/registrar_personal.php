@@ -1,12 +1,3 @@
-<!--/**
-* Registrar persona = vista ; Permite registrar un persona.
-*
-* @package    ModeloAulafrontino
-* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-* @link       https://github.com/EquipoAulaFrontino
-* @version    v1.0
-*/-->
 <h1 class="page-header">Registrar Persona</h1>
 <!-- EMPIEZA: RECOMENDACION -->
   <div class="alert alert-info" role="alert">
