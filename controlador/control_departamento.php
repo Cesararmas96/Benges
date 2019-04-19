@@ -4,11 +4,12 @@
 	$lobjDepartamento=new clsDepartamento;
 
 	$lobjDepartamento->set_departamento($_POST['iddepartamento']);
+	$lobjDepartamento->set_codigo($_POST['codigodep']);
 	$lobjDepartamento->set_denominacion($_POST['denominacion']);
-	$lobjDepartamento->set_persona($_POST['idtpersona']);
-	$lobjDepartamento->set_sede($_POST['idsede']);
+	
+	$cod=$_POST['codigodep'];
+	$nom=$_POST['denominacion'];
 	$operacion=$_POST['operacion'];
-$nom=$_POST['iddepartamento'];
 	switch ($operacion) 
 	{
 		case 'registrar_departamento':
@@ -16,6 +17,13 @@ $nom=$_POST['iddepartamento'];
 		{
 			header('location: ../vista/intranet.php?vista=departamento/registrar_departamento&datos=existe');
 		}
+
+
+		if($lobjDepartamento->consultar_departamento_cod($cod))
+		{
+			header('location: ../vista/intranet.php?vista=departamento/registrar_departamento&datos=existe');
+		}
+
 		else{
 			$hecho=$lobjDepartamento->registrar_departamento();
 			if($hecho)
@@ -29,13 +37,30 @@ $nom=$_POST['iddepartamento'];
 			header('location: ../vista/intranet.php?vista=departamento/departamento');
 		}
 		break;
-		case 'editar_departamento':
-				if($lobjDepartamento->consultar_departamento_nom($nom))
-		{
-			header('location: ../vista/intranet.php?vista=departamento/consultar_departamento&datos=existe');
-		}
-		else{
+		// case 'editar_departamento':
+		// 	if($lobjDepartamento->consultar_departamento_nom($nom)){
+		// 		header('location: ../vista/intranet.php?vista=departamento/consultar_departamento&datos=existe');
+		// 	}
+		// 	if($lobjDepartamento->consultar_departamento_cod($cod)){
+		// 		header('location: ../vista/intranet.php?vista=departamento/consultar_departamento&datos=existe');
+		// 	}
 
+		// else{
+		// 	$hecho=$lobjDepartamento->editar_departamento();
+		// 	if($hecho)
+		// 	{
+		// 		$_SESSION['msj']='Se ha modificado exitosamente';
+		// 	}
+		// 	else
+		// 	{	
+		// 		$_SESSION['msj']='Error al modificar';
+		// 	}
+		// 	header('location: ../vista/intranet.php?vista=departamento/departamento');
+		// }
+		// break;
+		case 'editar_departamento':
+	
+	
 			$hecho=$lobjDepartamento->editar_departamento();
 			if($hecho)
 			{
@@ -46,7 +71,7 @@ $nom=$_POST['iddepartamento'];
 				$_SESSION['msj']='Error al modificar';
 			}
 			header('location: ../vista/intranet.php?vista=departamento/departamento');
-		}
+		
 		break;
 		case 'desactivar_departamento':
 			$hecho=$lobjDepartamento->desactivar_departamento();

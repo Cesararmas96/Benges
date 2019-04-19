@@ -12,6 +12,12 @@
   <div class="alert alert-info" role="alert">
     <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar un Tipo en el sistema.
   </div>
+
+   <div class="alert alert-danger" role="alert">
+   <i class="fa fa-info-circle"></i> Los campos con color amarillo son de caracter obligatorio. 
+    <br>
+   <i class="fa fa-info-circle"></i> A lado de los nombres de los campos aparece el simbolo:<strong> "?"</strong>, donde aparecera una breve ayuda. 
+</div>
 <!-- FIN: RECOMENDACION -->
 <?php 
                     
@@ -36,10 +42,10 @@
     
     
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="cam_nombre_tipo">Nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del tipo"><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="form-control" name="nombretip" id="cam_nombre_tipo" style="width:200px; height:35px" maxlength="25" required/>
+        <div class="col-md-4">
+            <div class="form-group has-warning">
+                <label for="cam_nombre_tipo">Nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nombre del tipo que desea guardar"><i class="fa fa-question" ></i></span></label>
+                <input type="text" class="form-control" name="nombretip" id="cam_nombre_tipo" placeholder="Ingresar el nombre el Tipo" maxlength="25" required/>
             </div>
         </div>
        
@@ -48,12 +54,16 @@
         <div class="status_per"></div>
         
     <br>
-        <div class="col-md-6">
-            <button type="button" class="btn btn-danger center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=tipo/tipo';"><i class="fa fa-chevron-left"></i> Regresar</button>
-        </div>
-        
-        <div class="col-md-4">
-            <button type="submit" class="btn btn-danger center-block" name="btn_enviar" id="btn_enviar"><i class="fa fa-check"></i> Aceptar</button>
+         <div class="row">
+            <div class="col-md-4">
+                <button type="button" class="btn  center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=tipo/tipo';"><i class="fa fa-chevron-left"></i> Regresar</button>
+            </div>
+            <div class="col-md-1">
+                <button type="reset" class="btn btn-danger center-block" type="button" name=""><i class="fa fa-remove"></i> Cancelar</button>
+            </div>
+            <div class="col-md-5">
+                <button type="submit" class="btn btn-success center-block" name="btn_enviar" id="btn_enviar"><i class="fa fa-check"></i>Guardar</button>
+            </div>
         </div>
    
 </form>

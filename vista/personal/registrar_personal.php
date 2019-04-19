@@ -3,6 +3,12 @@
   <div class="alert alert-info" role="alert">
     <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar una persona en el sistema.
   </div>
+
+  <div class="alert alert-danger" role="alert">
+   <i class="fa fa-info-circle"></i> Los campos con color amarillo son de caracter obligatorio. 
+    <br>
+   <i class="fa fa-info-circle"></i> A lado de los nombres de los campos aparece el simbolo:<strong> "?"</strong>, donde aparecera una breve ayuda. 
+</div>
   <?php
 
                         if(isset($_GET['datos'])){
@@ -25,12 +31,15 @@
     <input type="hidden" value="registrar_personal" name="operacion" />
     <input type="hidden"  name="idtpersona" id="cam_idtpersona"/>
     
+    
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-            <div class="form-group">
-                <label for="cam_idtpersona">Cédula <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="No ingrese puntos (.) ni comas (,)."><i class="fa fa-question" ></i></span></label>
-                <input type="text" name="idtpersona"  class="form-control" id="cam_idtpersona" onkeyup="this.value=this.value.replace(solo_numeros, '')"  maxlength="8"  required/>
+            <div class="form-group has-warning">
+                <label for="cam_cedulaper">Cédula <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="No ingrese puntos (.) ni comas (,)."><i class="fa fa-question" ></i></span></label>
+               
+                <input placeholder="Ingresar Cedula del Personal" type="text" name="cedulaper"  class="form-control" id="cam_cedulaper" onkeyup="this.value=this.value.replace(solo_numeros, '')"  maxlength="8"  required/>
+ 
                 <div class="status_per"></div>
             </div>
         </div>
@@ -38,10 +47,13 @@
         <div class="col-sm-1"></div>
 
         <div class="col-sm-4">
+             <label>Nacionalidad <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Nacionalidad de la persona a registrar"><i class="fa fa-question" required ></i></span></label>
             <div class="form-group">
-                <label for="cam_correoper">Correo electrónico <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Correo electrónico del persona."><i class="fa fa-question" ></i></span></label>
-                <input type="email" class="form-control" name="correoper" id="cam_correoper"  required/>
-            </div>
+                <select class="form-control" name="nacionalidadper" id="nacionalidadper">
+                    <option value="0">Venezolano(a)</option>
+                    <option value="1">Extranjero(a)</option>
+                </select>
+            </div>     
         </div>
     </div>
     
@@ -50,10 +62,10 @@
         </div>
 
         <div class="col-sm-4">
-            <div class="form-group">
+            <div class="form-group has-warning">
                 <label for="cam_nombreunoper">Primer nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Campo solo de letras"><i class="fa fa-question" ></i></span></label>
                 
-                <input type="text"  class="form-control"  name="nombreunoper" id="cam_nombreunoper"  onkeyup="this.value=this.value.replace(solo_letras, '')"   required/>
+                <input placeholder="Ingresar Primer Nombre del personal" type="text"  class="form-control"  name="nombreunoper" id="cam_nombreunoper"  onkeyup="this.value=this.value.replace(solo_letras, '')"   required/>
             </div>
         </div>
 
@@ -63,7 +75,7 @@
         <div class="col-sm-4">
             <div class="form-group">
                 <label for="cam_nombredosper">Segundo nombre <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Campo solo de letras"><i class="fa fa-question" ></i></span></label>
-                <input type="text"  class="form-control"  name="nombredosper" id="cam_nombredosper" onkeyup="this.value=this.value.replace(solo_letras, '')" />
+                <input type="text"  placeholder="Ingresar segundo nombre del personal" class="form-control"  name="nombredosper" id="cam_nombredosper" onkeyup="this.value=this.value.replace(solo_letras, '')" />
             </div>
         </div>
     </div>
@@ -72,9 +84,9 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-            <div class="form-group">
+            <div class="form-group has-warning  ">
                 <label for="cam_apellidounoper">Primer apellido <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Campo solo de letras"><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="form-control" name="apellidounoper" id="cam_apellidounoper"  onkeyup="this.value=this.value.replace(solo_letras, '')" required/>
+                <input placeholder="Ingresar primer apellido del personal" type="text" class="form-control" name="apellidounoper" id="cam_apellidounoper"  onkeyup="this.value=this.value.replace(solo_letras, '')" required/>
             </div>
         </div>
         <div class="col-sm-1"></div>
@@ -82,7 +94,7 @@
         <div class="col-sm-4">
             <div class="form-group">
                 <label for="cam_apellidodosper">Segundo apellido <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Campo solo de letras"><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="form-control" name="apellidodosper" id="cam_apellidodosper" onkeyup="this.value=this.value.replace(solo_letras, '')" />
+                <input placeholder="Ingresar segundo apellido del personal" type="text" class="form-control" name="apellidodosper" id="cam_apellidodosper" onkeyup="this.value=this.value.replace(solo_letras, '')" />
             </div>
         </div>
     </div>
@@ -90,7 +102,7 @@
         <div class="col-sm-1"></div>
 
         <div class="col-sm-4">
-            <div class="form-group">
+            <div class="form-group has-warning">
                 <label for="cam_fecha ">Fecha de nacimiento <strong><i class="text-help fa fa-question-circle" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Presione en el calendario y elija la fecha"></i></strong></label>
                 <div class="input-group input-append date" data-date="" id="dp1" >
                <span class="input-group-addon "><i class="fa fa-calendar"></i></span>
@@ -104,33 +116,41 @@
           <div class="col-sm-4">
             <div class="form-group">
                 <label for="cam_telefonoper">Teléfono <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Campo númerico, no escribir guiones (-)"><i class="fa fa-question" ></i></span></label>
-                <input type="text" class="form-control" maxlength="11" name="telefonoper" id="cam_telefonoper"   onkeyup="this.value=this.value.replace(solo_numeros, '')"  />
+                <input type="text" placeholder="Ingresar el telefono del personal" class="form-control" maxlength="11" name="telefonoper" id="cam_telefonoper"   onkeyup="this.value=this.value.replace(solo_numeros, '')"  />
             </div>
         </div>
     </div>
      <div class="row">
         <div class="col-sm-1"></div>
-            
-           <div class="col-sm-9">
-            <div class="form-group">
-                <label for="cam_direccionper">Dirección <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Dirección de habitación del persona."><i class="fa fa-question" ></i></span></label>
-                <textarea class="form-control" name="direccionper" id="cam_direccionper"></textarea>
+            <div class="col-sm-4">
+                <div class="form-group has-warning">
+                    <label for="cam_correoper">Correo electrónico <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Correo electrónico del persona."><i class="fa fa-question" ></i></span></label>
+                    <input placeholder="Ingresar correo del personal " type="email" class="form-control" name="correoper" id="cam_correoper"  required/>
+                </div> 
             </div>
-        </div>
 
+            <div class="col-sm-1"></div>
+           
+            <div class="col-sm-4">
+                <div class="form-group has-warning">
+                    <label for="cam_direccionper ">Dirección <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Dirección de habitación del persona."><i class="fa fa-question" ></i></span></label>
+                    <input type="text" placeholder="Ingresar la direccion de vivienda personal" required class="form-control has-warning" name="direccionper" id="cam_direccionper">
+                </div>
+            </div>
         <div class="col-sm-1"></div>
-
     </div>
 
     <div class="row">
-        <input type="hidden" name="ope" id="ope">
-        <div class="col-md-5">
-            <button type="button" class="btn btn-danger center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=personal/personal';"><i class="fa fa-chevron-left"></i> Regresar</button>
+            <div class="col-md-4">
+                <button type="button" class="btn  center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=personal/personal';"><i class="fa fa-chevron-left"></i> Regresar</button>
+            </div>
+            <div class="col-md-1">
+                <button type="reset" class="btn btn-danger center-block" type="button" name=""><i class="fa fa-remove"></i> Cancelar</button>
+            </div>
+            <div class="col-md-5">
+                <button type="submit" class="btn btn-success center-block" name="btn_enviar" id="btn_enviar"><i class="fa fa-check"></i>Guardar</button>
+            </div>
         </div>
-        <div class="col-md-5">
-            <button type="submit" class="btn btn-danger center-block" name="btn_enviar" id="btn_enviar"  ><i class="fa fa-check"></i> Aceptar</button>
-        </div>
-    </div>
 
 
 

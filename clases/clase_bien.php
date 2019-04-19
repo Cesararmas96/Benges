@@ -12,7 +12,7 @@
 		private $lcIdmodelo;
 		private $lcIdtipo;
 		private $lcIdcategoria;
-		private $lcIdcolor;
+		private $lccolor;
 		private $lcDescripcion;
 	
 
@@ -26,7 +26,7 @@
 	    $this->lcIdmodelo =0 ;
 	    $this->lcIdtipo =0 ;
 	    $this->lcIdcategoria =0 ;
-	    $this->lcIdcolor=0;
+	    $this->lcColor='';
 	    $this->lcDescripcion = '';
 
     	}
@@ -63,9 +63,9 @@
 			$this->lcIdtipo = $pcidtipo;
 		}
 
-		public function set_idcolor($pcidcolor)
+		public function set_color($pccolor)
 		{
-			$this->lcIdcolor = $pcidcolor;
+			$this->lcColor = $pccolor;
 		}
 
 		public function set_idcategoria($pcidcategoria)
@@ -123,19 +123,20 @@
 			$this->conectar();
 			$laBien = array();
 			$cont = 0;
-			$sql = "SELECT   tcatalogo.idtcatalogo,tcatalogo.estatuscata, tcatalogo.cantidadcat, tmodelo.nombremode, tcategoria.nombrecat, ttipo.nombretip, tmarca.nombremar , tcolor.nombrecol, tcatalogo.descripcioncat FROM tcatalogo, ttipo, tmarca, tmodelo, tcategoria, tcolor WHERE tcatalogo.idttipo=ttipo.idttipo AND tcatalogo.idtcategoria=tcategoria.idtcategoria AND tcatalogo.idtmodelo=tmodelo.idtmodelo AND tcatalogo.idtmarca=tmarca.idtmarca AND tcatalogo.idtcolor=tcolor.idtcolor;";
+			$sql = "SELECT   tcatalogo.idtcatalogo,tcatalogo.estatuscata, tmodelo.nombremode, tcategoria.nombrecat, ttipo.nombretip, tmarca.nombremar , tcatalogo.colorcat, tcatalogo.descripcioncat, tcatalogo.disponibilidadcata, tcatalogo.existenciacata FROM tcatalogo, ttipo, tmarca, tmodelo, tcategoria  WHERE tcatalogo.idttipo=ttipo.idttipo AND tcatalogo.idtcategoria=tcategoria.idtcategoria AND tcatalogo.idtmodelo=tmodelo.idtmodelo AND tcatalogo.idtmarca=tmarca.idtmarca;";
 			$pcsql = $this->filtro($sql);
 			while($laRow = $this->proximo($pcsql))
 			{
 				$laBien[$cont]['idtcatalogo']	= $laRow['idtcatalogo'];
-				$laBien[$cont]['cantidadcat']	= $laRow['cantidadcat'];
 				$laBien[$cont]['estatuscata']	= $laRow['estatuscata'];
 				$laBien[$cont]['nombretip']	= $laRow['nombretip'];
 				$laBien[$cont]['nombrecat']	= $laRow['nombrecat'];
 				$laBien[$cont]['nombremar']	= $laRow['nombremar'];
 				$laBien[$cont]['nombremode']	= $laRow['nombremode'];
-				$laBien[$cont]['nombrecol']	= $laRow['nombrecol'];
+				$laBien[$cont]['colorcat']	= $laRow['colorcat'];
 				$laBien[$cont]['descripcioncat']	= $laRow['descripcioncat'];
+				$laBien[$cont]['disponibilidadcata']	= $laRow['disponibilidadcata'];
+				$laBien[$cont]['existenciacata']	= $laRow['existenciacata'];
 
 
 
@@ -158,9 +159,9 @@
 			#	$id2= $idtbien +1;
 
 			$sql ="INSERT INTO tcatalogo
-					(idtcatalogo,  idttipo, idtcategoria, idtmarca, idtmodelo, idtcolor, descripcioncat)
+					(idtcatalogo,  idttipo, idtcategoria, idtmarca, idtmodelo, colorcat, descripcioncat)
 					VALUES
-				('$this->lnCodigo','$this->lcIdtipo','$this->lcCategoria','$this->lcIdmarca','$this->lcIdmodelo', '$this->lcIdcolor', UPPER('$this->lcDescripcion'))";
+				('$this->lnCodigo','$this->lcIdtipo','$this->lcCategoria','$this->lcIdmarca','$this->lcIdmodelo', '$this->lcColor', UPPER('$this->lcDescripcion'))";
 			$lnHecho=$this->ejecutar($sql);
 
 			// #echo $lnHechos;
@@ -170,11 +171,9 @@
 			echo $this->lnCodigo;
 			$this->desconectar();
 
-			return $lnHecho;
-
-
-			
+			return $lnHecho;			
 		}
+
 		function añadir()
 		{
 			$this->conectar();

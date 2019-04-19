@@ -4,17 +4,18 @@
 	require_once("../clases/clase_bien.php");
 	$lobjBien=new clsBien;
 	$lobjBien->set_id($_POST['idtcatalogo']);
-	$lobjBien->set_codigo($_POST['idttipo'].$_POST['idtcategoria'].$_POST['idtmarca'].$_POST['idtmodelo'].$_POST['idtcolor']);
+	
+	$lobjBien->set_codigo($_POST['idttipo'].$_POST['idtcategoria'].$_POST['idtmarca'].$_POST['idtmodelo']);
 	$lobjBien->set_categoria($_POST['idtcategoria']);
 	$lobjBien->set_idmarca($_POST['idtmarca']);
 	$lobjBien->set_idmodelo($_POST['idtmodelo']);
 	$lobjBien->set_idtipo($_POST['idttipo']);
-	$lobjBien->set_idcolor($_POST['idtcolor']);
+	$lobjBien->set_color($_POST['colorcat']);
 	$lobjBien->set_descripcion($_POST['descripcioncat']);
 
 
 
-$codigo=$_POST['idttipo'].$_POST['idtcategoria'].$_POST['idtmarca'].$_POST['idtmodelo'].$_POST['idtcolor'];
+$codigo=$_POST['idttipo'].$_POST['idtcategoria'].$_POST['idtmarca'].$_POST['idtmodelo'];
 
 	$operacion=$_POST['operacion'];
 

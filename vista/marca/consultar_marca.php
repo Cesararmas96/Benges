@@ -21,6 +21,10 @@
   <div class="alert alert-info" role="alert">
     <strong><i class="fa fa-info-circle"></i></strong> Aquí podras consultar y/o modificar los datos de una Marcas en el sistema.
   </div>
+  <div class="alert alert-danger" role="alert">
+  
+   <i class="fa fa-info-circle"></i> A lado de los nombres de los campos aparece el simbolo:<strong> "?"</strong>, donde aparecera una breve ayuda. 
+</div>
 <!-- FIN: RECOMENDACION -->
 <?php
 
@@ -43,10 +47,10 @@
     <input type="hidden" value="editar_marca" name="operacion" />
     <input type="hidden"  name="idtmarca" id="cam_idtmarca" value="<?php print($laMarca['idtmarca']);?>" />
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
-                <label for="cam_cedulaest">Marca <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Marca."><i class="fa fa-question" ></i></span></label>
-                <input type="text" name="nombremar" class="form-control" id="cam_nombre_marca" style="width:200px; height:35px" maxlength="25" value="<?php print($laMarca['nombremar']);?>" required/>
+                <label for="cam_cedulaest">Marca <span class="label label-warning" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="right" data-content="Campo para modificar el nombre de la marca"><i class="fa fa-question" ></i></span></label>
+                <input type="text" name="nombremar" class="form-control" id="cam_nombre_marca"  maxlength="25" value="<?php print($laMarca['nombremar']);?>" required/>
                 <div class="status_per"></div>
             </div>
         </div>
@@ -54,10 +58,10 @@
 
     <div class="row">
         <div class="col-md-6">
-            <button type="button" class="btn btn-danger center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=marca/marca';"><i class="fa fa-chevron-left"></i> Regresar</button>
+            <button type="button" class="btn  center-block" name="btn_regresar" id="btn_regresar" onclick="window.location.href='?vista=marca/marca';"><i class="fa fa-chevron-left"></i> Regresar</button>
         </div>
         <div class="col-md-6">
-            <button type="submit" class="btn btn-danger center-block"><i class="fa fa-check" name="btn_enviar" id="btn_enviar"></i> Aceptar</button>
+            <button type="submit" class="btn btn-success center-block"><i class="fa fa-check" name="btn_enviar" id="btn_enviar"></i> Modificar</button>
         </div>
     </div>
 </form>

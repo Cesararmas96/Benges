@@ -53,7 +53,7 @@ function activar(id)
     }
 }
 </script>
-<h1 class="page-header">Mobiliarios</h1>
+<h1 class="page-header">Ejemplares</h1>
 <!-- EMPIEZA: RECOMENDACION -->
 <div class="alert alert-info" role="alert">
     <strong><i class="fa fa-info-circle" ></i></strong> Aquí podras registrar y consultar los Ejemplares de los mobiliarios. 
@@ -63,7 +63,7 @@ function activar(id)
 <?php
 	if($registrar)
 	{
-		echo '<a class="btn btn-success" id="btn_registrar" href="?vista=ejemplar/registrar_ejemplar"><i class="fa fa-plus"></i> Registrar Mobiliario</a>';
+		echo '<a class="btn btn-success" id="btn_registrar" href="?vista=ejemplar/registrar_ejemplar"><i class="fa fa-plus"></i> Registrar Ejemplar</a>';
 	}
   // {
   //       echo '<a class="btn btn-success" id="btn_reporte" target="_blank" href="../reporte/listado_ejemplar.php"><i class="fa fa-file-text"></i> Listado de los Mobiliarios</a>';

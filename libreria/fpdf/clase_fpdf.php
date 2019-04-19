@@ -64,7 +64,6 @@
 
 
 			
-			 $this->Image('../bootstrap-3/img/footer.png');
 		}
 	}
 ?>

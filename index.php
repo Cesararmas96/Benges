@@ -135,7 +135,7 @@
             <div class="container home-intro-content">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2> Universas Nacional Experimental de la Seguridad </h2>
+                        <h2> Universidad Nacional Experimental de la Seguridad </h2>
                        
                         
                     </div> <!-- /.col-md-12 -->

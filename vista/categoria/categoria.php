@@ -57,9 +57,15 @@ function activar(id)
 </script>    
 <h1 class="page-header">Clasificacion</h1>
     <!-- EMPIEZA: RECOMENDACION -->
-          <div class="alert alert-info" role="alert">
-            <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, cosultar, modificar y desactivar las Clasificaciones en el sistema.
-          </div>
+    <div class="alert alert-info" role="alert">
+        <i class="fa fa-info-circle"></i> Aquí podras registrar, consultar y modificar las clasificacion.
+        <br>
+        <i class="fa fa-info-circle"></i> Permite al usuario desactivar el registro <i class="fa fa-remove"></i>.
+        <br>
+        <i class="fa fa-info-circle"></i> Permite al usuario activar el registro <i class="fa fa-refresh"> </i>.
+        <br>
+        <i class="fa fa-info-circle"></i> Permite al usuario consultar/modificar el registro <i class="fa fa-search"></i>.
+    </div>
     <!-- FIN: RECOMENDACION -->
     <?php
     if($registrar)
@@ -72,7 +78,7 @@ function activar(id)
         <input type="hidden"  name="idtcategoria" id="cam_idtcategoria"/>
         <table class="cell-border compact hover stripe" id="filtro">
             <thead>
-                <th>Nro.</th><th>Nombre</th><th>Tipo</th><?php if($consultar || $desactivar)
+                <th>Nro.</th><th>Clasificacion</th><th>Tipo</th><?php if($consultar || $desactivar)
                         { echo '<th>Operación</th>';}?>
             </thead>
             <tbody>
@@ -91,7 +97,7 @@ function activar(id)
                         echo '<td>';
                         if($consultar)
                         {
-                            echo '<a class="btn btn-info btn-sm" href="#" onclick="buscar('.$laCategorias[$i]['idtcategoria'].')"><i class="fa fa-search"></i></a>';
+                            echo '<a class="btn btn-info " href="#" onclick="buscar('.$laCategorias[$i]['idtcategoria'].')"><i class="fa fa-search"></i></a>';
                         }
                         if($desactivar)
                        {

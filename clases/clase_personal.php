@@ -1,18 +1,12 @@
 <?php
-	/**
-	* Clase persona
-	*
-	* @package    ModeloAulafrontino
-	* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-	* @author     Equipo de desarrollo Aula Frontino <aulafrontino@gmail.com>
-	* @link       https://github.com/EquipoAulaFrontino
-	* @version    v1.0
-	*/
+
 	require_once('../nucleo/ModeloConect.php');
 	class clsPersona extends ModeloConect
 	{
 
 		private $lnIdtpersona;
+		private $lnCedula;
+		private $lnNacionalidadper;
 		private $lcNombreuno;
 		private $lcNombredos;
 		private $lcApellidouno;
@@ -26,6 +20,8 @@
 		public function __construct()
 		{
 	        $this->lnIdtpersona = 0;
+	        $this->lnCedula = 0;
+	        $this->lnNacionalidadper = 0;
 	        $this->lcNombreuno = '';
 	        $this->lcNombredos = '';
 	        $this->lcApellidouno = '';
@@ -42,6 +38,16 @@
 			$this->lnIdtpersona = $pnIdtpersona;
 		}
 
+		public function set_cedula($pnCedula)
+		{
+			$this->lnCedula = $pnCedula;
+		}
+
+
+		public function set_Nacionalidadper($pcNacionalidad)
+		{
+			$this->lnNacionalidadper = $pcNacionalidad;
+		}
 
 		public function set_Nombreuno($pcNombreuno)
 		{
@@ -95,7 +101,10 @@
 			$pcsql = $this->filtro($sql);
 			while($laRow = $this->proximo($pcsql))
 			{
+
 				$laPersona['idtpersona']	= $laRow['idtpersona'];
+				$laPersona['cedulaper']	= $laRow['cedulaper'];
+				$laPersona['nacionalidadper']	= $laRow['nacionalidadper'];
 				$laPersona['nombreunoper']	= $laRow['nombreunoper'];
 				$laPersona['nombredosper']	= $laRow['nombredosper'];
 				$laPersona['apellidounoper']= $laRow['apellidounoper'];
@@ -120,6 +129,7 @@
 			while($laRow = $this->proximo($pcsql))
 			{
 				$laPersona['idtpersona']	= $laRow['idtpersona'];
+				$laPersona['nacionalidadper']	= $laRow['nacionalidadper'];
 				$laPersona['nombreunoper']	= $laRow['nombreunoper'];
 				$laPersona['nombredosper']	= $laRow['nombredosper'];
 				$laPersona['apellidounoper']= $laRow['apellidounoper'];
@@ -144,6 +154,7 @@
 			while($laRow = $this->proximo($pcsql))
 			{
 				$laPersona[$cont]['idtpersona']	= $laRow['idtpersona'];
+				$laPersona[$cont]['cedulaper']	= $laRow['cedulaper'];
 				$laPersona[$cont]['nombreunoper']	= $laRow['nombreunoper'];
 				$laPersona[$cont]['nombredosper']	= $laRow['nombredosper'];
 				$laPersona[$cont]['apellidounoper']	= $laRow['apellidounoper'];
@@ -187,10 +198,10 @@
 		{
 			$this->conectar();
 			$sql = "INSERT INTO `tpersona`
-					(`idtpersona`, `nombreunoper`, `nombredosper`, `apellidounoper`
+					(`idtpersona`,`cedulaper` ,`nacionalidadper`,`nombreunoper`, `nombredosper`, `apellidounoper`
 						, `apellidodosper`, `fechanacimientoper`, `direccionper`, `telefonoper`, `correoper`)
 					VALUES
-					('$this->lnIdtpersona', UPPER('$this->lcNombreuno'), UPPER('$this->lcNombredos'), UPPER('$this->lcApellidouno')
+					('$this->lnIdtpersona','$this->lnCedula','$this->lnNacionalidadper'  ,UPPER('$this->lcNombreuno'), UPPER('$this->lcNombredos'), UPPER('$this->lcApellidouno')
 						,UPPER('$this->lcApellidodos'), ('$this->lcFechaNac'),UPPER('$this->lcDireccion'), '$this->lnTelefonoMovil', '$this->lcCorreo');";
 			$lnHecho=$this->ejecutar($sql);
 
@@ -226,7 +237,8 @@
 		public function editar_persona()
 		{
 			$this->conectar();
-			$sql="UPDATE `tpersona` SET
+			$sql="UPDATE `tpersona` SET  `idtpersona`='$this->lnIdtpersona', 
+			`nacionalidadper` = ('$this->lnNacionalidadper'),`cedulaper` = ('$this->lnCedula'),
 					`nombreunoper`=UPPER('$this->lcNombreuno'),`nombredosper`=UPPER('$this->lcNombredos')
 					,`apellidounoper`=UPPER('$this->lcApellidouno'),`apellidodosper`=UPPER('$this->lcApellidodos'), `fechanacimientoper`= ('$this->lcFechaNac'), `direccionper`=UPPER('$this->lcDireccion'), `telefonoper`='$this->lnTelefonoMovil'
 					,`correoper`='$this->lcCorreo'

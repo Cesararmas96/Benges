@@ -67,7 +67,14 @@ function activar(id)
 <h1 class="page-header">Departamento</h1>
 <!-- EMPIEZA: RECOMENDACION -->
 <div class="alert alert-info" role="alert">
-    <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar cosultar los departamento.
+    <i class="fa fa-info-circle"></i> Aquí podras registrar, consultar y modificar los departamento.
+    <br>
+    <i class="fa fa-info-circle"></i> Permite al usuario desactivar el registro <i class="fa fa-remove"></i>.
+    <br>
+    <i class="fa fa-info-circle"></i> Permite al usuario activar el registro <i class="fa fa-refresh"> </i>.
+    <br>
+    <i class="fa fa-info-circle"></i> Permite al usuario consultar/modificar el registro <i class="fa fa-search"></i>.
+
 </div>
 <!-- FIN: RECOMENDACION -->
 <?php
@@ -83,7 +90,7 @@ if($registrar)
     <input type="hidden"  name="iddepartamento" id="cam_iddepartamento"/>
     <table class="table table-striped table-hover table-bordered bootstrap-datatable datatable dataTable" id="filtro">
         <thead>
-            <th>Codigo</th><th>Denominacion</th><th>Encargado</th><th>Sede</th><?php if($consultar || $desactivar || $listar)
+            <th>Codigo</th><th>Denominacion</th><?php if($consultar || $desactivar || $listar)
                     { echo '<th>Operación</th>';}?>
         </thead>
         <tbody>
@@ -93,17 +100,16 @@ if($registrar)
                 $laDepartamento=$lobjDepartamento->listar_departamento();
                 for($i=0;$i<count($laDepartamento);$i++)
                 {
-                    echo '<td>'.$laDepartamento[$i]['iddepartamento'].'</td>';
+                    echo '<td>'.$laDepartamento[$i]['codigodep'].'</td>';
                     echo '<td>'.$laDepartamento[$i]['denominacion'].'</td>';
-                    echo '<td>'.$laDepartamento[$i]['nomyape'].'</td>';
-                    echo '<td>'.$laDepartamento[$i]['nombresede'].'</td>';
+                   
 
-                    if($consultar || $desactivar || $listar)
+                    if($consultar || $desactivar)
                     {
                         echo '<td>';
                         if($consultar)
                         {
-                            echo '<a class="btn btn-info btn-sm" href="#" onclick="buscar('.$laDepartamento[$i]['iddepartamento'].')"><i class="fa fa-search"></i></a>';
+                            echo '<a class="btn btn-info  href="#" onclick="buscar('.$laDepartamento[$i]['iddepartamento'].')"><i class="fa fa-search"></i></a>';
                         }
                          if($desactivar)
                        {
@@ -116,12 +122,7 @@ if($registrar)
                            {
                                echo ' <a class="btn btn-warning" title="Restaurar" href="#" onclick="activar('.$laDepartamento[$i]['iddepartamento'].')" ><i class="fa fa-refresh"></i></a>';
                            }
-                       }if($listar)
-
-                        echo '
-                            <a class="btn btn-warning" href="#" onclick="lista('.$laDepartamento[$i]['iddepartamento'].')" ><i class="fa fa-file-text"></i></a>';
-
-                        echo "</td>";
+                       }
 
                     }
 

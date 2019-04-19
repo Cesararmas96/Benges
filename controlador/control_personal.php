@@ -1,18 +1,10 @@
 <?php
-	/**
-	* Controlador persona
-	*
-	* @package    ModeloAulafrontino
-	* @license    http://www.gnu.org/licenses/gpl.txt  GNU GPL 3.0
-	* @author     Equipo de desarrollo AulaFrontino <aulafrontino@gmail.com>
-	* @link       https://github.com/EquipoAulaFrontino
-	* @version    v1.0
-	*/
 	session_start();
 	require_once("../clases/clase_personal.php");
 	$lobjPersona = new clsPersona;
-
 	$lobjPersona->set_Persona($_POST['idtpersona']);
+	$lobjPersona->set_cedula($_POST['cedulaper']);
+	$lobjPersona->set_Nacionalidadper($_POST['nacionalidadper']);
 	$lobjPersona->set_Nombreuno($_POST['nombreunoper']);
 	$lobjPersona->set_Nombredos($_POST['nombredosper']);
 	$lobjPersona->set_Apellidouno($_POST['apellidounoper']);

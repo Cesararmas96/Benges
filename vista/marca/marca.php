@@ -57,9 +57,16 @@ function activar(id)
 </script>    
 <h1 class="page-header">Marca</h1>
     <!-- EMPIEZA: RECOMENDACION -->
-          <div class="alert alert-info" role="alert">
-            <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, cosultar, modificar y eliminar las marcas del sistema.
-          </div>
+    <div class="alert alert-info" role="alert">
+        <i class="fa fa-info-circle"></i> Aquí podras registrar, consultar y modificar las marcas.
+        <br>
+        <i class="fa fa-info-circle"></i> Permite al usuario desactivar el registro <i class="fa fa-remove"></i>.
+        <br>
+        <i class="fa fa-info-circle"></i> Permite al usuario activar el registro <i class="fa fa-refresh"> </i>.
+        <br>
+        <i class="fa fa-info-circle"></i> Permite al usuario consultar/modificar el registro <i class="fa fa-search"></i>.
+    </div>
+
     <!-- FIN: RECOMENDACION -->
     <?php
     if($registrar)

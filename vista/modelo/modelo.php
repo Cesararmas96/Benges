@@ -48,9 +48,15 @@ function activar(id)
 </script>    
 <h1 class="page-header">Modelo</h1>
     <!-- EMPIEZA: RECOMENDACION -->
-          <div class="alert alert-info" role="alert">
-            <strong><i class="fa fa-info-circle"></i></strong> Aquí podras registrar, consultar, modificar y desactivar los modelos del sistema.
-          </div>
+    <div class="alert alert-info" role="alert">
+        <i class="fa fa-info-circle"></i> Aquí podras registrar, consultar y modificar los Modelos.
+        <br>
+        <i class="fa fa-info-circle"></i> Permite al usuario desactivar el registro <i class="fa fa-remove"></i>.
+        <br>
+        <i class="fa fa-info-circle"></i> Permite al usuario activar el registro <i class="fa fa-refresh"> </i>.
+        <br>
+        <i class="fa fa-info-circle"></i> Permite al usuario consultar/modificar el registro <i class="fa fa-search"></i>.
+    </div>
     <!-- FIN: RECOMENDACION -->
     <?php
     if($registrar)
@@ -63,7 +69,7 @@ function activar(id)
         <input type="hidden"  name="idtmodelo" id="cam_idtmodelo"/>
         <table class="cell-border compact hover stripe" id="filtro">
             <thead>
-                <th>Nro.</th><th>Nombre</th><th>Marca</th><?php if($consultar || $desactivar)
+                <th>Nro.</th><th>Modelo</th><th>Marca</th><?php if($consultar || $desactivar)
                         { echo '<th>Operación</th>';}?>
             </thead>
             <tbody>
@@ -82,7 +88,7 @@ function activar(id)
                         echo '<td>';
                         if($consultar)
                         {
-                            echo '<a class="btn btn-info btn-sm" href="#" onclick="buscar('.$laModelo[$i]['idtmodelo'].')"><i class="fa fa-search"></i></a>';
+                            echo '<a class="btn btn-info " href="#" onclick="buscar('.$laModelo[$i]['idtmodelo'].')"><i class="fa fa-search"></i></a>';
                         }
                         if($desactivar)
                        {
